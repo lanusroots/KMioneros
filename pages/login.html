@@ -1,0 +1,94 @@
+<html lang="es">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   Login Page
+  </title>
+  <script src="https://cdn.tailwindcss.com">
+  </script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&amp;display=swap" rel="stylesheet"/>
+  <style>
+   body {
+            font-family: 'Roboto', sans-serif;
+        }
+  </style>
+ </head>
+ <body class="bg-gray-100">
+  <div class="flex min-h-screen">
+   <div class="w-1/2 flex flex-col justify-center items-center bg-white p-8">
+    <div class="w-full max-w-md">
+     <div class="flex items-center mb-6">
+      <button class="text-2xl text-gray-600">
+       <i class="fas fa-arrow-left">
+       </i>
+      </button>
+     </div>
+     <h1 class="text-3xl font-bold mb-2">
+      Bienvenid@
+      <span class="text-yellow-500">
+       👋
+      </span>
+     </h1>
+     <p class="text-gray-600 mb-6">
+      Nos alegra verte! Ingresa con tu correo y contraseña
+     </p>
+     <form>
+      <div class="mb-4">
+       <label class="block text-gray-700 text-sm font-bold mb-2" for="email">
+        Correo electrónico
+       </label>
+       <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="email" placeholder="ejemplo@gmail.com" type="email"/>
+      </div>
+      <div class="mb-4">
+       <label class="block text-gray-700 text-sm font-bold mb-2" for="password">
+        Contraseña
+       </label>
+       <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="password" placeholder="Al menos 8 caracteres" type="password"/>
+       <a class="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800" href="#">
+        ¿Olvidaste tu contraseña?
+       </a>
+      </div>
+      <div class="mb-6">
+       <button class="bg-gray-800 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded w-full focus:outline-none focus:shadow-outline" type="button">
+        <a href="./dashboard.html">
+            Ingresar
+           </a>
+       </button>
+      </div>
+      <div class="flex items-center justify-center mb-4">
+       <span class="text-gray-500">
+        o
+       </span>
+      </div>
+      <div class="mb-4">
+       <button class="bg-white border border-gray-300 text-gray-700 font-bold py-2 px-4 rounded w-full flex items-center justify-center focus:outline-none focus:shadow-outline" type="button">
+        <img alt="Google logo" class="mr-2" height="20" src="../assets/google.png" width="20"/>
+        Ingresar con Google
+       </button>
+      </div>
+      <div class="mb-4">
+       <button class="bg-white border border-gray-300 text-gray-700 font-bold py-2 px-4 rounded w-full flex items-center justify-center focus:outline-none focus:shadow-outline" type="button">
+        <img alt="Facebook logo" class="mr-2" height="20" src="../assets/face.png" width="20"/>
+        Ingresar con Facebook
+       </button>
+      </div>
+     </form>
+     <p class="text-center text-gray-600 text-sm">
+      ¿No tienes una cuenta?
+      <a class="text-blue-500 hover:text-blue-800" href="#">
+       Regístrate
+      </a>
+     </p>
+     <p class="text-center text-gray-500 text-xs mt-6">
+      © 2024 ALL RIGHTS RESERVED
+     </p>
+    </div>
+   </div>
+   <div class="w-1/2">
+    <img alt="KMioneros HHRR" class="w-full h-full object-cover" height="1000" src="../assets/registro.jpg" width="800"/>
+   </div>
+  </div>
+ </body>
+</html>

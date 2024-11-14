@@ -64,12 +64,10 @@
       </div>
       <div class="p-4">
         <div class="flex items-center mb-4">
-          <img alt="User Profile Picture" class="h-10 w-10 rounded-full" height="40" src="../assets/admin.png"
+          <img alt="User Profile Picture" class="h-10 w-10 rounded-full" height="40" src="../assets/user_profile.png"
             width="40" />
           <div class="ml-3">
-            <p class="text-sm font-medium">
-              Max Fernandez
-            </p>
+            <p id="userName" class="text-sm font-medium"></p>
             <p class="text-xs text-gray-500">
               Usuario ID: 25732
             </p>
@@ -77,19 +75,16 @@
           <i class="fas fa-chevron-down ml-auto text-gray-500">
           </i>
         </div>
-        <button class="w-full bg-gray-200 text-gray-700 py-2 rounded-lg hover:bg-gray-300">
+        <button class="w-full bg-gray-200 text-gray-700 py-2 rounded-lg hover:bg-gray-300" onclick="logout()">
           <i class="fas fa-sign-out-alt mr-2">
           </i>
-          <a href="../index.html">
-            Logout
-          </a>
+          Logout
         </button>
       </div>
     </div>
     <!-- Main Content -->
     <div class="flex-1 p-10">
-      <h1 class="text-2xl font-bold text-gray-800 p-6">
-        Hola Max !!
+      <h1 id="greeting" class="text-2xl font-bold">
         <span class="wave">
           👋
         </span>
@@ -129,6 +124,32 @@
       </div>
     </div>
   </div>
+  <script>
+    // Recuperar email y nombre completo del usuario desde localStorage
+    const nombre = localStorage.getItem('nombre');
+    const email = localStorage.getItem('email');
+
+    // Verificar que ambos datos existan antes de mostrarlos
+    if (email && nombre) {
+        // Personalizar el saludo con el email
+        document.getElementById('greeting').textContent = `¡Hola, ${nombre}!`;
+
+        // Mostrar el nombre completo del usuario
+        document.getElementById('userName').textContent = nombre;
+    } else {
+        // En caso de que falten los datos, redirigir o mostrar un mensaje
+        document.getElementById('greeting').textContent = 'Bienvenido, Usuario Invitado';
+    }
+
+    // Función de logout
+    function logout() {
+        // Eliminar los datos de localstorage
+        localStorage.clear();
+
+        // Redirigir al usuario a la página de inicio
+        window.location.href = '../index.html';
+    }
+</script>
 </body>
 
 </html>

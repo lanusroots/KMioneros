@@ -64,12 +64,10 @@
             </div>
             <div class="p-4">
                 <div class="flex items-center mb-4">
-                    <img alt="User Profile Picture" class="h-10 w-10 rounded-full" height="40" src="../assets/admin.png"
+                    <img alt="User Profile Picture" class="h-10 w-10 rounded-full" height="40" src="../assets/user_profile.png"
                         width="40" />
                     <div class="ml-3">
-                        <p class="text-sm font-medium">
-                            Max Fernandez
-                        </p>
+                        <p id="userName" class="text-sm font-medium"></p>
                         <p class="text-xs text-gray-500">
                             Usuario ID: 25732
                         </p>
@@ -77,19 +75,16 @@
                     <i class="fas fa-chevron-down ml-auto text-gray-500">
                     </i>
                 </div>
-                <button class="w-full bg-gray-200 text-gray-700 py-2 rounded-lg hover:bg-gray-300">
+                <button class="w-full bg-gray-200 text-gray-700 py-2 rounded-lg hover:bg-gray-300" onclick="logout()">
                     <i class="fas fa-sign-out-alt mr-2">
                     </i>
-                    <a href="../index.html">
-                        Logout
-                    </a>
+                    Logout
                 </button>
             </div>
         </div>
         <!-- Main Content -->
         <div class="flex-1 p-10">
-            <h1 class="text-2xl font-bold text-gray-800">
-                Hola Max !!
+            <h1 id="greeting" class="text-2xl font-bold">
                 <span class="wave">
                     👋
                 </span>
@@ -98,40 +93,38 @@
                 <h2 class="text-xl font-bold mb-6">
                     Nuevo Chofer
                 </h2>
-                <form>
+                <form id="choferForm">
                     <div class="mb-4">
                         <label class="block text-gray-700">
                             Nombre completo
                         </label>
-                        <input class="w-full mt-2 p-2 border border-gray-300 rounded"
+                        <input id="nombreChofer" class="w-full mt-2 p-2 border border-gray-300 rounded"
                             placeholder="Ingresá nombre y apellido" type="text" />
                     </div>
                     <div class="mb-4">
                         <label class="block text-gray-700">
                             Correo electrónico
                         </label>
-                        <input class="w-full mt-2 p-2 border border-gray-300 rounded" placeholder="Ingresá tu email"
+                        <input id="emailChofer" class="w-full mt-2 p-2 border border-gray-300 rounded" placeholder="Ingresá tu email"
                             type="email" />
                     </div>
                     <div class="mb-4">
                         <label class="block text-gray-700">
                             Ciudad
                         </label>
-                        <input class="w-full mt-2 p-2 border border-gray-300 rounded" placeholder="Ingresá tu ciudad"
+                        <input id="ciudadChofer" class="w-full mt-2 p-2 border border-gray-300 rounded" placeholder="Ingresá tu ciudad"
                             type="text" />
                     </div>
                     <div class="mb-6">
                         <label class="block text-gray-700">
                             DNI
                         </label>
-                        <input class="w-full mt-2 p-2 border border-gray-300 rounded" placeholder="Ingresá tu n° de DNI"
+                        <input id="dniChofer" class="w-full mt-2 p-2 border border-gray-300 rounded" placeholder="Ingresá tu n° de DNI"
                             type="text" />
                     </div>
                     <div class="flex justify-end">
-                        <button class="bg-blue-500 text-white px-4 py-2 rounded mr-2" type="button">
-                            <a href="./id_validation.html">
-                                Siguiente
-                            </a>
+                        <button class="bg-blue-500 text-white px-4 py-2 rounded mr-2" type="button" onclick="guardarChofer()">
+                            Siguiente
                         </button>
                         <button class="bg-gray-200 text-gray-700 px-4 py-2 rounded" type="button">
                             Cancelar
@@ -141,6 +134,52 @@
             </div>
         </div>
     </div>
+    <script>
+        // Recuperar email y nombre completo del usuario desde localStorage
+        const nombre = localStorage.getItem('nombre');
+        const email = localStorage.getItem('email');
+    
+        // Verificar que ambos datos existan antes de mostrarlos
+        if (email && nombre) {
+            // Personalizar el saludo con el email
+            document.getElementById('greeting').textContent = `¡Hola, ${nombre}!`;
+    
+            // Mostrar el nombre completo del usuario
+            document.getElementById('userName').textContent = nombre;
+        } else {
+            // En caso de que falten los datos, redirigir o mostrar un mensaje
+            document.getElementById('greeting').textContent = 'Bienvenido, Usuario Invitado';
+        }
+        // Lógica crear nuevo chofer
+        function guardarChofer() {
+            const nombreChofer = document.getElementById('nombreChofer').value;
+            const dniChofer = document.getElementById('dniChofer').value;
+            const emailChofer = document.getElementById('emailChofer').value;
+            const ciudadChofer = document.getElementById('ciudadChofer').value;
+    
+            const chofer = {
+                nombreChofer: nombreChofer,
+                dniChofer: dniChofer,
+                emailChofer: emailChofer,
+                ciudadChofer: ciudadChofer
+            };
+    
+            // Guardar el chofer creado en localStorage
+            localStorage.setItem('chofer', JSON.stringify(chofer));
+    
+            alert('Datos del chofer guardados exitosamente');
+            window.location.href = 'id_validation.html';
+        }
+
+        // Función de logout
+     function logout() {
+        // Eliminar los datos de localstorage
+        localStorage.clear();
+
+        // Redirigir al usuario a la página de inicio
+        window.location.href = '../index.html';
+    }
+    </script>
 </body>
 
 </html>

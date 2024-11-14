@@ -21,8 +21,10 @@
     <div class="w-full max-w-md">
      <div class="flex items-center mb-6">
       <button class="text-2xl text-gray-600">
-       <i class="fas fa-arrow-left">
-       </i>
+        <a href="../index.html">
+            <i class="fas fa-arrow-left">
+            </i>
+            </a>
       </button>
      </div>
      <h1 class="text-3xl font-bold mb-2">
@@ -34,7 +36,7 @@
      <p class="text-gray-600 mb-6">
       Nos alegra verte! Ingresa con tu correo y contraseña
      </p>
-     <form>
+     <form id="loginForm">
       <div class="mb-4">
        <label class="block text-gray-700 text-sm font-bold mb-2" for="email">
         Correo electrónico
@@ -51,12 +53,11 @@
        </a>
       </div>
       <div class="mb-6">
-       <button class="bg-gray-800 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded w-full focus:outline-none focus:shadow-outline" type="button">
-        <a href="./dashboard.html">
-            Ingresar
-           </a>
+       <button type="submit" class="bg-gray-800 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded w-full focus:outline-none focus:shadow-outline" type="button">
+        Ingresar
        </button>
       </div>
+    </form>
       <div class="flex items-center justify-center mb-4">
        <span class="text-gray-500">
         o
@@ -74,7 +75,6 @@
         Ingresar con Facebook
        </button>
       </div>
-     </form>
      <p class="text-center text-gray-600 text-sm">
       ¿No tienes una cuenta?
       <a class="text-blue-500 hover:text-blue-800" href="#">
@@ -90,5 +90,24 @@
     <img alt="KMioneros HHRR" class="w-full h-full object-cover" height="1000" src="../assets/registro.jpg" width="800"/>
    </div>
   </div>
+  <script>
+    document.getElementById('loginForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+        const email = document.getElementById('email').value;
+        const password = document.getElementById('password').value;
+
+        // Email y password desde localStorage
+        const storedEmail = localStorage.getItem('email');
+        const storedPassword = localStorage.getItem('password');
+
+        // Logica de logueo
+        if (email === storedEmail && password === storedPassword) {
+            alert('Login successful!');
+            window.location.href = 'dashboard.html';
+        } else {
+            alert('Invalid email or password.');
+        }
+    });
+</script>
  </body>
 </html>

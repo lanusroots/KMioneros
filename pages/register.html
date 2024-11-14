@@ -1,0 +1,72 @@
+<html lang="es">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>Crear una nueva cuenta</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+</head>
+<body class="bg-gray-100 flex items-center justify-center min-h-screen">
+  <div class="bg-white rounded-lg shadow-lg p-6 flex">
+    <div class="w-1/2">
+      <img alt="Hombre con gafas sosteniendo una laptop y sonriendo" class=" w-full h-full object-cover rounded-lg" height="1000" src="../assets/fondo1.png" width="600"/>
+    </div>
+    <div class="w-1/2 pl-8">
+      <div class="flex items-center mb-4">
+        <button class="bg-gray-200 rounded-full p-2">
+            <a href="../index.html">
+            <i class="fas fa-arrow-left">
+            </i>
+            </a>
+        </button>
+      </div>
+      <h2 class="text-2xl font-semibold mb-2">Creá una nueva cuenta</h2>
+      <p class="text-gray-600 mb-6">Completá con tus datos y registrate como nuevo usuario.</p>
+      <form id="registerForm">
+        <div class="mb-4">
+          <label class="block text-gray-700" for="nombre">Nombre completo</label>
+          <input class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" id="nombre" placeholder="Ingrese aquí su nombre" type="text"/>
+        </div>
+        <div class="mb-4">
+          <label class="block text-gray-700" for="email">Correo electrónico</label>
+          <input class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" id="email" placeholder="ejemplo@email.com" type="email"/>
+        </div>
+        <div class="mb-4">
+          <label class="block text-gray-700" for="password">Contraseña</label>
+          <input class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" id="password" placeholder="Al menos 4 caracteres" type="password"/>
+        </div>
+        <div class="mb-4">
+          <label class="block text-gray-700" for="confirm-password">Repetir contraseña</label>
+          <input class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" id="confirm-password" placeholder="Al menos 4 caracteres" type="password"/>
+        </div>
+        <button class="w-full bg-blue-900 text-white py-2 rounded-lg hover:bg-blue-800" type="submit">Registrarse</button>
+      </form>
+      <p class="text-gray-500 text-sm text-center mt-6">© 2024 ALL RIGHTS RESERVED</p>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('registerForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      const nombre = document.getElementById('nombre').value;
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+      const confirmPassword = document.getElementById('confirm-password').value;
+
+      if (password !== confirmPassword) {
+        alert('Las contraseñas no coinciden');
+        return;
+      }
+
+      // Save the email and password to localStorage
+      localStorage.setItem('nombre', nombre);
+      localStorage.setItem('email', email);
+      localStorage.setItem('password', password);
+
+      alert('Registro exitoso');
+      window.location.href = 'login.html';
+    });
+  </script>
+</body>
+</html>
